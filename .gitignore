@@ -1,4 +1,4 @@
 .idea
 out/
 logs/
-.csv
+*.csv
