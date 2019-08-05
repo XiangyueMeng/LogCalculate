@@ -23,7 +23,8 @@ public class Calculator {
         int totalTimeWithoutZero = 0;
         int totalTimeOver300 = 0;
         int numOver300 = 0;
-        File csvFile = new File("./" + filename + ".csv");
+//        File csvFile = new File("./" + filename + ".csv");
+        File csvFile = new File("./syncData.csv");
         csvFile.delete();
         try{
             csvFile.createNewFile();
