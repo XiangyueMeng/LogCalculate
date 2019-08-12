@@ -14,7 +14,7 @@ public class Calculator {
         calculator.calculate(args[0], Integer.valueOf(args[1]), Integer.valueOf(args[2]));
 
     }
-
+    // start and end are the block number of the log
     void calculate(String filename, int start, int end){
         long totalTime = 0;
         long totalTxs = 0;

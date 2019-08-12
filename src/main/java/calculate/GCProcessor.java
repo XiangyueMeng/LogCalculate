@@ -5,12 +5,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// this class are used to filter the gc log according to the time
+// since we only want to check the gc process during the highest pressure, we need to screen out
+// gc log of other time period
 public class GCProcessor {
     public static void main(String[] args){
         GCProcessor gcProcessor = new GCProcessor();
 //        gcProcessor.process(args[0], args[1], args[2]);
         gcProcessor.processWithNewFormat(args[0], args[1], args[2]);
     }
+
+// this method are used to process the gc log of the original start.sh
+// in this format, the head of the log file shows the gc parameters and the following
+// logs will start with the time stamp, so we use the time to filter the log
     void process(String filename, String start, String end){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS Z");
         SimpleDateFormat formatForLog = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -43,6 +50,9 @@ public class GCProcessor {
             e.printStackTrace();
         }
     }
+
+//  after add -XX:+PrintHeapAtGC -XX:+PrintTenuringDistribution parameter, the gc log will print more details
+//  one log will separate into multiple lines, according to the format regulation, use this new method to filter the log
     void processWithNewFormat(String filename, String start, String end){
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS Z");
         SimpleDateFormat formatForLog = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
